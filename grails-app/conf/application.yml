@@ -4,6 +4,12 @@ info:
     version: '@info.app.version@'
     grailsVersion: '@info.app.grailsVersion@'
 grails:
+  plugin:
+    elasticsearch:
+      enabled: true
+      client:
+        host: localhost
+        port: 9200
   codegen:
     defaultPackage: com.ilal
   profile: web
@@ -59,16 +65,16 @@ dataSource:
 environments:
   development:
     dataSource:
-      dbCreate: create-drop
-      url: jdbc:mysql://localhost:3306/devDb
+      dbCreate: create
+      url: jdbc:mysql://localhost:3306/gerak
   test:
     dataSource:
       dbCreate: update
-      url: jdbc:mysql://localhost:3306/testDb
+      url: jdbc:mysql://localhost:3306/gerak
   production:
     dataSource:
       dbCreate: none
-      url: jdbc:mysql://localhost:3306/prodDb
+      url: jdbc:mysql://localhost:3306/gerak
       properties:
         jmxEnabled: true
         initialSize: 5
@@ -92,3 +98,5 @@ hibernate:
     queries: false
     use_second_level_cache: false
     use_query_cache: false
+server:
+  port: 8081

@@ -8,8 +8,14 @@
 <body>
 <h1>Search Results (GORM Query)</h1>
 
-<!-- Form untuk pencarian -->
-<form action="${createLink(controller: 'book', action: 'searchWithGORM')}" method="get">
+<!-- Form untuk Pencarian -->
+<form action="${createLink(controller: 'book', action: 'search')}" method="get">
+    <label>Elasticsearch</label>
+    <input type="text" name="query" placeholder="Search for a book by title" value="${query ?: ''}" />
+    <button type="submit">Search</button>
+</form>
+<form action="${createLink(controller: 'book', action: 'gorm')}" method="get">
+    <label>GORM</label>
     <input type="text" name="query" placeholder="Search for a book by title" value="${query ?: ''}" />
     <button type="submit">Search</button>
 </form>
