@@ -35,15 +35,15 @@
     <button type="submit">Save</button>
 </form>
 
-<!-- Tampilkan Daftar Buku -->
-<h2>Book List</h2>
-<ul>
-    <g:each in="${books}" var="book">
-        <li>
-            <strong>${book.title}</strong> by ${book.author} (${book.publicationYear ?: 'N/A'})
-            <a href="${createLink(controller: 'book', action: 'delete', id: book.id)}" onclick="return confirm('Are you sure you want to delete this book?')">Delete</a>
-        </li>
-    </g:each>
-</ul>
+%{--<!-- Tampilkan Daftar Buku -->--}%
+%{--<h2>Book List</h2>--}%
+%{--<ul>--}%
+%{--    <g:each in="${books}" var="book">--}%
+%{--        <li>--}%
+%{--            <strong>${book.title}</strong> by ${book.author} (${book.publicationYear ?: 'N/A'})--}%
+%{--            <a href="${createLink(controller: 'book', action: 'delete', id: book.id)}" onclick="return confirm('Are you sure you want to delete this book?')">Delete</a>--}%
+%{--        </li>--}%
+%{--    </g:each>--}%
+%{--</ul>--}%
 </body>
 </html>
