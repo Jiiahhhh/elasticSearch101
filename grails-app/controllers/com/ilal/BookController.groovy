@@ -73,8 +73,15 @@ class BookController {
             redirect(action: "index")
             return
         }
+
         def results = Book.createCriteria().list {
-            ilike("title", "%${query}%")
+            if (query.isInteger()) {
+                // Jika input adalah angka, cari exact match untuk "Book Title <angka>"
+                eq("title", "Book Title ${query.toInteger()}")
+            } else {
+                // Jika input adalah teks, gunakan ilike untuk pencarian fleksibel
+                ilike("title", "%${query}%")
+            }
         }
 
         render(view: 'gorm', model: [books: results, query: query])

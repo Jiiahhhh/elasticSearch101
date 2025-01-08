@@ -23,6 +23,7 @@ class ElasticsearchService {
             SearchRequest searchRequest = new SearchRequest("books")
             SearchSourceBuilder sourceBuilder = new SearchSourceBuilder()
             sourceBuilder.query(QueryBuilders.matchQuery("title", query))
+            sourceBuilder.size(100)
             searchRequest.source(sourceBuilder)
 
             SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT)
