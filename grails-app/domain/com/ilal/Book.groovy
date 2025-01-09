@@ -16,5 +16,9 @@ class Book {
         publicationYear nullable: true
     }
 
-    static searchable = true
+    static searchable = {
+        title analyzer: 'whitespace'
+        author analyzer: 'standard'
+    }
+
 }

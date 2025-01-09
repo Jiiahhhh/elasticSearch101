@@ -5,7 +5,6 @@ import org.openqa.selenium.firefox.FirefoxOptions
 import org.openqa.selenium.safari.SafariDriver
 
 environments {
-
     // You need to configure in Safari -> Develop -> Allowed Remote Automation
     safari {
         driver = { new SafariDriver() }

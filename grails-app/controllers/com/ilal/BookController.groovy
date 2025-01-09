@@ -16,7 +16,7 @@ class BookController {
     def search() {
         String query = params.query
         if (!query) {
-            flash.message = "Please provide a search query"
+            flash.message = 'Please provide a search query'
             redirect(action: 'index')
             return
         }
@@ -35,55 +35,56 @@ class BookController {
         try {
             if (book.save(flush: true)) {
                 elasticsearchService.saveBook(book)
-                flash.message = "Book saved and indexed successfully."
-                redirect(action: "index")
+                flash.message = 'Book saved and indexed successfully.'
+                redirect(action: 'index')
             } else {
-                flash.message = "Failed to save book"
-                render(view: "create", model: [book: book])
+                flash.message = 'Failed to save book'
+                render(view: 'create', model: [book: book])
             }
         } catch (ValidationException e) {
             flash.message = "Validation error: ${e.message}"
-            render(view: "create", model: [book: book])
+            render(view: 'create', model: [book: book])
         }
     }
 
     def delete(Long id) {
         def book = Book.get(id)
         if (!book) {
-            flash.message = "Book not found."
-            redirect(action: "index")
+            flash.message = 'Book not found.'
+            redirect(action: 'index')
             return
         }
 
         try {
             book.delete(flush: true)
             elasticsearchService.deleteBook(book)
-            flash.message = "Book deleted successfully."
-            redirect(action: "index")
+            flash.message = 'Book deleted successfully.'
+            redirect(action: 'index')
         } catch (Exception e) {
             flash.message = "Error occured while deleteing book: ${e.message}"
-            redirect(action: "index")
+            redirect(action: 'index')
         }
     }
 
     def gorm() {
         String query = params.query
         if (!query) {
-            flash.message = "Please provide a search query."
-            redirect(action: "index")
+            flash.message = 'Please provide a search query.'
+            redirect(action: 'index')
             return
         }
 
         def results = Book.createCriteria().list {
             if (query.isInteger()) {
                 // Jika input adalah angka, cari exact match untuk "Book Title <angka>"
-                eq("title", "Book Title ${query.toInteger()}")
+                eq('title', "Book Title ${query.toInteger()}")
             } else {
                 // Jika input adalah teks, gunakan ilike untuk pencarian fleksibel
-                ilike("title", "%${query}%")
+                ilike('title', "%${query}%")
             }
         }
 
         render(view: 'gorm', model: [books: results, query: query])
     }
+
 }

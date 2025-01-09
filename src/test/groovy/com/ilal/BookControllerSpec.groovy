@@ -12,7 +12,8 @@ class BookControllerSpec extends Specification implements ControllerUnitTest<Boo
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        expect:'fix me'
+        true == false
     }
+
 }
