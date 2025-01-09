@@ -1,16 +1,17 @@
 package com.ilal
 
 class UrlMappings {
+
     static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
+        "/$controller/$action?/$id?(.$format)?" {
             constraints {
-                // apply constraints here
+            // apply constraints here
             }
         }
 
-        "/"(controller: 'book', action: 'index')
-        "500"(view:'/error')
-        "404"(view:'/notFound')
-
+        '/'(controller: 'book', action: 'index')
+        '500'(view:'/error')
+        '404'(view:'/notFound')
     }
+
 }

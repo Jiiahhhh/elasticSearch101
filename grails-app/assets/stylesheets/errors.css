@@ -29,7 +29,7 @@ h2 {
 
 /* error details */
 .error-details {
-    border: 1px solid #FFAAAA;
+    border: 1px solid #FAA;
     background-color:#FFF3F3;
     line-height: 1.5;
     overflow: hidden;
@@ -43,7 +43,7 @@ h2 {
     margin-right: 5px;
 }
 
-.error-details dt:after {
+.error-details dt::after {
     content: ":";
 }
 
